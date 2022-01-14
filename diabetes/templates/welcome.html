@@ -1,0 +1,218 @@
+{% load static %}
+{% csrf_token %}
+<html>
+<head>
+<title>Diabetes Prediction</title>
+
+<style>
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body{
+  background: #00506b;
+}
+
+.predict-form{
+  width: 280px;
+  background: #ffff;
+  padding: 50px;
+  margin: 100px auto;
+  border-radius: 30px;
+  position: relative;
+}
+
+.form-title h1{
+  color: rgb(82, 85, 82);
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form,
+.form-items{
+  width: 100%;
+}
+
+.form-items .input{
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 15px 40px;
+  box-sizing: border-box;
+  background: #dce0e4;
+  border: 0px;
+  outline: none;
+  border-radius: 30px;
+}
+
+.form-items .input.message{
+  height: 125px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  padding: 15px 15px;
+  resize: none;
+}
+
+.btn{
+  background: #4d2e96;
+  text-align: center;
+  color: #ffff;
+  padding: 15px;
+  border-radius: 25px;
+  
+}
+
+.btn .fas{
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.form-items{
+  position: relative;
+}
+
+.form-items .fas{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #9a99aa;
+}
+
+
+
+.active {
+  background-color: #04AA6D;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(151, 14, 14, 0.6);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+
+
+<script>
+
+function validate_form()
+{
+var Pregnancies = document.getElementById('Pregnancies').value;
+var Glucose = document.getElementById('Glucose').value;
+var BloodPressure = document.getElementById('BloodPressure').value;
+var SkinThickness = document.getElementById('SkinThickness').value;
+var Insulin = document.getElementById('Insulin').value;
+var BMI = document.getElementById('BMI').value;
+var DiabetesPedigreeFunction = document.getElementById('DiabetesPedigreeFunction').value;
+var Age = document.getElementById('Age').value;
+
+if (Pregnancies==null || Pregnancies==""){
+  alert("Pregnancies can't be blank");
+  return false;
+}else if (Glucose==null || Glucose==""){
+  alert("Glucose can't be blank");
+  return false;
+  }
+  else if (BloodPressure==null || BloodPressure==""){
+  alert("Blood Pressure can't be blank");
+  return false;
+  }
+  else if (SkinThickness==null || SkinThickness==""){
+  alert("Skin Thickness can't be blank");
+  return false;
+  }
+  else if (Insulin==null || Insulin==""){
+  alert("Insulin can't be blank");
+  return false;
+  }  else if (BMI==null || BMI==""){
+  alert("BMI can't be blank");
+  return false;
+  }
+  else if (DiabetesPedigreeFunction==null || DiabetesPedigreeFunction==""){
+  alert("DiabetesPedigreeFunction can't be blank");
+  return false;
+  }
+   else if (Age==null || Age==""){
+  alert("Age can't be blank");
+  return false;
+  }
+}  
+</script>
+
+</head>
+<body>
+<ul>
+  <li><a href = "{% url 'index' %}">Diabetes Prediction</a></li>
+  <li style="float:right"><a class="active" href="{% url 'accounts:logout' %}">Logout</a></li>
+  <li style="float:right"><a>Welcome: {{user.username}}</a></li>
+</ul>
+
+
+  <div class="predict-form">
+    <div class="form-title">
+      <h1>Diabetes Prediction</h1>
+    </div>
+    <div class="form">
+  		<form id="form1" name="form1" method="POST", action="/diabetes_prediction/" onsubmit=" return validate_form()" >
+
+      <div class="form-items">
+        <input type="text" class="input" name="Pregnancies" id="Pregnancies" placeholder="Pregnancies">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="Glucose" id="Glucose" placeholder="Glucose">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="BloodPressure" id="BloodPressure" placeholder="BloodPressure">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="SkinThickness" id="SkinThickness" placeholder="SkinThickness">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="Insulin" id="Insulin" placeholder="Insulin">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="BMI" id="BMI" placeholder="BMI">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="DiabetesPedigreeFunction" id="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction">
+      </div>
+  		<div class="form-items">
+        <input type="text" class="input" name="Age" id="Age" placeholder="Age">
+      </div>
+
+    </div>
+<div align="center">
+    <button type="submit" form="form1" value="Submit" class="btn">Submit</button>
+
+    <button  type="reset" form="form1" value="reset" class="btn">Clear</button>
+</div>
+
+   <br>
+   <br>
+   <br>
+   <br>
+ <center><h1 style="color:{{res_color}};"><b>{{ result }}</b></h1>
+</center>	
+
+</body>
+</html>
