@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+<!-- {% load static %} -->
 <html lang="en">
 
 <head>
@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="static/css/index.css">
 </head>
 
 <body>
@@ -24,21 +24,31 @@
             <a class="navbar-brand" href="{% url 'index' %}">Diabetes and Heart Disease Prediction</a>
 
             <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
+                <!-- {% if user.is_authenticated %}
                 <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
 
-                {% else %}
+                {% else %} -->
                 <li><a href="{% url 'accounts:login' %}" class="btn btn-simple">Log in</a></li>
                 <li><a href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
-                {% endif %}
+                <!-- {% endif %} -->
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        {% block content %}
-
-        {% endblock %}
+        <div class="hero">
+            <div class="hero-info">
+                <h2>Welcome</h2>
+                <p class="lead">A College Minor Project by Sonu, Deeraj, Rituraj and Prachi.</p>
+                <p class="lead">To continue further,</p>
+                <div>
+                    <button class="btn btn-primary">Login</button>
+                    <span> or </span>
+                    <button class="btn btn-signup">Sign up</button>
+                </div>
+            </div>
+            <img class="hero-img" src="static/imgs/med_img_1.png" alt="">
+        </div>
     </div>
 </body>
 
