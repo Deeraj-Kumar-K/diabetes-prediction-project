@@ -72,21 +72,14 @@ li a:hover {
 <div class="container">
 <center><div><h2>Heart Disease Prediction</h2></div></center>
   <hr />
-  {% if result %}
-  <div class="display-4 my-2 text-center">
-    <h3 style="color: {{colour}};"> {{ result }} </h3>
-  </div>
-  {% endif %}
 
-  <div class="mt-4">
-    <form class="row" method="POST" action="/heart_prediction/">
+    <form method="POST" action="/heart_prediction/">
       {% csrf_token %}
       <div class="col-md-4">
         <div class="form-group">
           <label for="age">Age</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="age"
             name="age"
@@ -96,7 +89,6 @@ li a:hover {
           <label for="sex">Sex</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="sex"
             name="sex"
@@ -106,7 +98,6 @@ li a:hover {
           <label for="cp">CP</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="cp"
             name="cp"
@@ -116,7 +107,6 @@ li a:hover {
           <label for="trestbps">TRESTBPS</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="trestbps"
             name="trestbps"
@@ -126,7 +116,6 @@ li a:hover {
           <label for="chol">CHOL</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="chol"
             name="chol"
@@ -137,8 +126,7 @@ li a:hover {
         <div class="form-group">
           <label for="fbs">FBS</label>
           <input
-            type="text"
-            step=".00001"
+            type="text"           
             class="form-control"
             id="fbs"
             name="fbs"
@@ -148,7 +136,6 @@ li a:hover {
           <label for="restecg">RESTECG</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="restecg"
             name="restecg"
@@ -158,7 +145,6 @@ li a:hover {
           <label for="thalach">THALACH</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="thalach"
             name="thalach"
@@ -168,7 +154,6 @@ li a:hover {
           <label for="exang">EXANG</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="exang"
             name="exang"
@@ -178,7 +163,6 @@ li a:hover {
           <label for="oldpeak">OLDPEAK</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="oldpeak"
             name="oldpeak"
@@ -190,7 +174,6 @@ li a:hover {
           <label for="slope">SLOPE</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="slope"
             name="slope"
@@ -200,7 +183,6 @@ li a:hover {
           <label for="ca">CA</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="ca"
             name="ca"
@@ -210,19 +192,19 @@ li a:hover {
           <label for="thal">THAL</label>
           <input
             type="text"
-            step=".00001"
             class="form-control"
             id="thal"
             name="thal"
           />
         </div>
 
-        <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">
-          Submit
-        </button>
+        <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">Submit</button>
       </div>
     </form>
   </div>
+  {% if result %}
+  <center><h2 style="color:{{colour}};"><b>{{ result }}</b></h2></center>
+  {% endif %}
 </div>
 </div>
 </body>
