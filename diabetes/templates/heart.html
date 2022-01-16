@@ -55,6 +55,79 @@ li a:hover {
 }
 </style>
 
+<script>
+
+  function validate_form()
+  {
+    var age = document.getElementById('age').value;
+    var sex = document.getElementById('sex').value;
+    var cp = document.getElementById('cp').value;
+    var trestbps = document.getElementById('trestbps').value;
+    var chol = document.getElementById('chol').value;
+    var fbs = document.getElementById('fbs').value;
+    var restecg = document.getElementById('restecg').value;
+    var thalach = document.getElementById('thalach').value;
+    var exang = document.getElementById('exang').value;
+    var oldpeak = document.getElementById('oldpeak').value;
+    var slope = document.getElementById('slope').value;
+    var ca = document.getElementById('ca').value;
+    var thal = document.getElementById('thal').value;
+  
+    if (age==null || age==""){
+    alert("age can't be blank");
+    return false;
+    }
+    else if (sex==null || sex==""){
+    alert("sex can't be blank");
+    return false;
+    }
+    else if (cp==null || cp==""){
+    alert("cp can't be blank");
+    return false;
+    }
+    else if (trestbps==null || trestbps==""){
+    alert("trestbps can't be blank");
+    return false;
+    }
+    else if (chol==null || chol==""){
+    alert("chol can't be blank");
+    return false;
+    }
+    else if (fbs==null || fbs==""){
+    alert("fbs can't be blank");
+    return false;
+    }
+    else if (restecg==null || restecg==""){
+    alert("restecg can't be blank");
+    return false;
+    }
+     else if (thalach==null || thalach==""){
+    alert("thalach can't be blank");
+    return false;
+    }
+    else if (exang==null || exang==""){
+    alert("exang can't be blank");
+    return false;
+    }
+    else if (oldpeak==null || oldpeak==""){
+    alert("oldpeak can't be blank");
+    return false;
+    }
+    else if (slope==null || slope==""){
+    alert("slope can't be blank");
+    return false;
+    }
+    else if (ca==null || ca==""){
+    alert("ca can't be blank");
+    return false;
+    }
+    else if (thal==null || thal==""){
+    alert("thal can't be blank");
+    return false;
+    }
+  }  
+  </script>
+
 </head>
 
 <body>
@@ -73,7 +146,7 @@ li a:hover {
 <center><div><h2>Heart Disease Prediction</h2></div></center>
   <hr />
 
-    <form method="POST" action="/heart_prediction/">
+    <form method="POST" action="/heart_prediction/" onsubmit=" return validate_form()">
       {% csrf_token %}
       <div class="col-md-4">
         <div class="form-group">
@@ -200,7 +273,7 @@ li a:hover {
 
         <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">Submit</button>
       </div>
-    </form>
+
   </div>
   {% if result %}
   <center><h2 style="color:{{colour}};"><b>{{ result }}</b></h2></center>
