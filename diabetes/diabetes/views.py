@@ -60,7 +60,7 @@ def diabetes_prediction(request):
 @csrf_exempt
 def heart_prediction(request):
     age = request.POST.get("age")
-    sex = request.POST.get("sex")
+    gender = request.POST.get("gender")
     cp = request.POST.get("cp")
     trestbps = request.POST.get("trestbps")
     chol = request.POST.get("chol")
@@ -74,7 +74,7 @@ def heart_prediction(request):
     thal = request.POST.get("thal")
 
     heart_data = [
-        age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal
+        age, gender, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal
         ]
 
     input_data_as_numpy_array=numpy.array(heart_data, dtype=numpy.float32)
@@ -87,12 +87,11 @@ def heart_prediction(request):
 
     outcome = prediction
 
-
-    if outcome == 1:
-        result = "Person's Heart is not Healthy"
-        colour = "red"
-    elif outcome == 0:
+    if outcome == 0:
         result = "Person's Heart is Healthy"
         colour = "green"
+    else:
+        result = "Person's Heart is not Healthy"
+        colour = "red"
 
     return render(request, 'heart.html', {'result':result, 'colour':colour})

@@ -60,7 +60,7 @@ li a:hover {
   function validate_form()
   {
     var age = document.getElementById('age').value;
-    var sex = document.getElementById('sex').value;
+    var gender = document.getElementById('gender').value;
     var cp = document.getElementById('cp').value;
     var trestbps = document.getElementById('trestbps').value;
     var chol = document.getElementById('chol').value;
@@ -77,8 +77,8 @@ li a:hover {
     alert("age can't be blank");
     return false;
     }
-    else if (sex==null || sex==""){
-    alert("sex can't be blank");
+    else if (gender==null || gender==""){
+    alert("gender can't be blank");
     return false;
     }
     else if (cp==null || cp==""){
@@ -150,7 +150,7 @@ li a:hover {
       {% csrf_token %}
       <div class="col-md-4">
         <div class="form-group">
-          <label for="age">Age</label>
+          <label for="age">Age</label> (The age of the patient)
           <input
             type="text"
             class="form-control"
@@ -159,16 +159,16 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="sex">Sex</label>
+          <label for="gender">Gender</label> (1 = male, 0 = female)
           <input
             type="text"
             class="form-control"
-            id="sex"
-            name="sex"
+            id="gender"
+            name="gender"
           />
         </div>
         <div class="form-group">
-          <label for="cp">CP</label>
+          <label for="cp">CP</label> [Type of chest pain. (1 = typical angina, 2 = atypical angina, 3 = non anginal pain, 4 = asymptotic)]
           <input
             type="text"
             class="form-control"
@@ -177,7 +177,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="trestbps">TRESTBPS</label>
+          <label for="trestbps">TRESTBPS</label> (Resting blood pressure in mmHg)
           <input
             type="text"
             class="form-control"
@@ -186,7 +186,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="chol">CHOL</label>
+          <label for="chol">CHOL</label> (Serum Cholestero in mg/dl)
           <input
             type="text"
             class="form-control"
@@ -197,7 +197,7 @@ li a:hover {
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="fbs">FBS</label>
+          <label for="fbs">FBS</label> [Fasting Blood Sugar. (1 = fasting blood sugar is more than 120mg/dl, 0 = otherwise)]
           <input
             type="text"           
             class="form-control"
@@ -206,7 +206,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="restecg">RESTECG</label>
+          <label for="restecg">RESTECG</label> [Resting ElectroCardioGraphic results (0 = normal, 1 = ST-T wave abnormality, 2 = left ventricular hyperthrophy)]
           <input
             type="text"
             class="form-control"
@@ -215,7 +215,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="thalach">THALACH</label>
+          <label for="thalach">THALACH</label> (Max heart rate achieved)
           <input
             type="text"
             class="form-control"
@@ -224,7 +224,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="exang">EXANG</label>
+          <label for="exang">EXANG</label> [Exercise induced angina (1 = yes, 0 = no)]
           <input
             type="text"
             class="form-control"
@@ -233,7 +233,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="oldpeak">OLDPEAK</label>
+          <label for="oldpeak">OLDPEAK</label> (ST depression induced by exercise relative to rest)
           <input
             type="text"
             class="form-control"
@@ -244,7 +244,7 @@ li a:hover {
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <label for="slope">SLOPE</label>
+          <label for="slope">SLOPE</label> [Peak exercise ST segment (1 = upsloping, 2 = flat, 3 = downsloping)]
           <input
             type="text"
             class="form-control"
@@ -253,7 +253,7 @@ li a:hover {
           />
         </div>
         <div class="form-group">
-          <label for="ca">CA</label>
+          <label for="ca">CA</label> [Number of major vessels (0 to 3) colored by flourosopy]
           <input
             type="text"
             class="form-control"
@@ -262,7 +262,7 @@ li a:hover {
           />
         </div>
         <div class="form-group mb-5">
-          <label for="thal">THAL</label>
+          <label for="thal">THAL</label> [Thalassemia (3 = normal, 6 = fixed defect, 7 = reversible defect)]
           <input
             type="text"
             class="form-control"
